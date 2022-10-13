@@ -26,10 +26,7 @@ class Cart extends React.Component {
                 <p data-testid="shopping-cart-product-name">
                   { product.title }
                 </p>
-                <p className={ styles.price }>
-                  {` ${product.price
-                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
-                </p>
+                <p className={ styles.price }>{`R$ ${product.price}`}</p>
                 <section className={ styles.quantity }>
                   <button
                     id={ product.id }
@@ -58,10 +55,10 @@ class Cart extends React.Component {
         </main>
         <section className={ styles.final }>
           <h2>
-            Valor total da compra:
+            Valor total da compra: R$
             {cartList.reduce(
               (acc, item) => (acc + (item.price * item.quantity)), 0,
-            ).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+            ).toFixed(2)}
 
           </h2>
           <button
